@@ -14,7 +14,7 @@
   - Allowed Values
   - Description
 
-## Entity Relaionship Diagram
+## Entity Relationship Diagram
 
 ## Results & Business Recommendations
 
