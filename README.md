@@ -9,7 +9,7 @@
 ## Skills
 
 ## Data Dictionary
-  - All the cilumns in the table
+  - All the columns in the table
   - Data Types
   - Allowed Values
   - Description
