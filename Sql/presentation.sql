@@ -1,4 +1,5 @@
 # Executive KPI Overview
+use supply_chain_db;
 CREATE VIEW vw_kpi_summary AS
 SELECT
 	COUNT(DISTINCT o.order_id) AS total_orders,
