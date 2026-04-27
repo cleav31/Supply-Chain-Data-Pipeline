@@ -76,11 +76,12 @@ GROUP BY supplier_id;
 CREATE VIEW vw_product_sales AS
 SELECT
 	p.product_id,
+    p.product_name,
     SUM(oi.quantity) AS total_units_sold,
     SUM(oi.quantity * oi.unit_price) AS total_revenue
 FROM order_items oi
 JOIN products p ON oi.product_id = p.product_id
-GROUP BY p.product_id;
+GROUP BY p.product_id, p.product_name;
 
 CREATE VIEW vw_revenue_trend AS
 SELECT

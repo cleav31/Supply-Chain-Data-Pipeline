@@ -4,6 +4,7 @@ USE supply_chain_db;
 CREATE TABLE IF NOT EXISTS products(
 	product_id  INT PRIMARY KEY AUTO_INCREMENT,
     category VARCHAR(50),
+    product_name VARCHAR(50),
     standard_cost DECIMAL(10,2),
     standard_price DECIMAL(10,2)
     );
