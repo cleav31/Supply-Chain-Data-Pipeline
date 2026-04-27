@@ -56,7 +56,6 @@ SELECT
     pb.product_id,
     pb.supplier_id,
     pb.production_date,
-    
     q.inspection_date,
     q.defective_units,
     q.passed_units,
@@ -90,6 +89,7 @@ SELECT
 	SUM(oi.quantity * oi.unit_price) AS revenue
 FROM orders o
 JOIN order_items oi ON o.order_id = oi.order_id
+WHERE o.required_date < CURDATE()
 GROUP BY o.required_date
 ORDER BY o.required_date;
 
