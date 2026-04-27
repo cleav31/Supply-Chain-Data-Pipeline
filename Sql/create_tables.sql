@@ -1,3 +1,4 @@
+CREATE DATABASE IF NOT EXISTS supply_chain_db;
 # switch to target database
 USE supply_chain_db;
 

@@ -23,7 +23,7 @@ def create_fake_products(num_products):
                 }
     for _ in range(num_products):
         category = random.choice(list(category_generators.keys()))
-        product_name = category.generators[category]()
+        product_name = category_generators[category]()
         products.append({
             "category": category,
             "product_name": product_name,

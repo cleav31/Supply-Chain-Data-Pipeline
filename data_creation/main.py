@@ -104,4 +104,4 @@ def run_full_pipeline(engine):
     insert_table(create_fake_quality_inspections(df_batches, df_employees, 1000), "quality_inspections", engine)
    
 if __name__ == "__main__":
-    main("shipments")
+    main("full")
