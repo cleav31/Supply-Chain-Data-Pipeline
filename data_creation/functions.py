@@ -15,13 +15,81 @@ fake = Faker()
 # Create products table
 def create_fake_products(num_products):
     products = []
+    category_generators = {
+                    "Electronics": gen_electronic,
+                    "Mechanical": gen_mechanical,
+                    "Hydraulic": gen_hydraulic,
+                    "Pneumatic": gen_pneumatic
+                }
     for _ in range(num_products):
+        category = random.choice(list(category_generators.keys()))
+        product_name = category.generators[category]()
         products.append({
-            "category": random.choice(["Electronics","Mechanical","Hydraulic","Pneumatic"]),
+            "category": category,
+            "product_name": product_name,
             "standard_cost": round(random.uniform(10,500),2),
             "standard_price": round(random.uniform(20,800),2)
         })
     return pd.DataFrame(products)
+
+def gen_electronic():
+    electronic_products = [
+        "Programmable Logic Controller(PLC)",
+        "Human Machine Interface(HMI)",
+        "Industrial Sensor",
+        "Proximity Switch",
+        "Power Supply Unit",
+        "Circuit Breaker",
+        "Relay Module",
+        "Variable Frequency Drive",
+        "Control Panel",
+        "Wiring Harness"   
+    ]
+    return random.choice(electronic_products)
+
+def gen_mechanical():
+    hydraulic_products = [
+        "Ball Bearing",
+        "Roller Bearing",
+        "Gear Shaft",
+        "Coupling",
+        "Linear Actuator",
+        "Pulley",
+        "Conveyor Roller",
+        "Mounting Bracket",
+        "Fastener Kit",
+        "Spring Assembly"
+    ]
+    return random.choice(hydraulic_products)
+
+def gen_hydraulic():
+    hydraulic_products = [
+        "Hydraulic Pump",
+        "Hydraulic Cylinder",
+        "Hydraulic Valve",
+        "Hydraulic Hose",
+        "Hydraulic Pressure Regulator",
+        "Flow Control Valve",
+        "Hydraulic Reservoir",
+        "Seal Kit",
+        "Manifold Block",
+        "Hydraulic Filter"
+    ]
+    return random.choice(hydraulic_products)
+
+def gen_pneumatic():
+    pneumatic_products = [
+        "Air Compressor",
+        "Pneumatic Cylinder",
+        "Solenoid Valve",
+        "Air Filter Regulator",
+        "Tubing Hose",
+        "Air Dryer",
+        "Pressure Gauge",
+        "Air Flow Control Valve",
+        "Quick Disconnect Coupler"
+    ]
+    return random.choice(pneumatic_products)
 
 # Create suppliers table
 def create_fake_suppliers(num_suppliers):
