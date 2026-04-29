@@ -55,13 +55,17 @@ SELECT
 	pb.batch_id,
     pb.product_id,
     pb.supplier_id,
+    q.inspection_id,
+    s.supplier_name,
     pb.production_date,
+    pb.production_cost,
     q.inspection_date,
     q.defective_units,
     q.passed_units,
     (q.defective_units/(q.defective_units + q.passed_units)) AS defect_rate
 FROM production_batches pb
-JOIN quality_inspections q ON pb.batch_id = q.batch_id;
+JOIN quality_inspections q ON pb.batch_id = q.batch_id
+JOIN suppliers s ON pb.supplier_id = s.supplier_id;
 
 CREATE VIEW vw_supplier_quality AS
 SELECT
