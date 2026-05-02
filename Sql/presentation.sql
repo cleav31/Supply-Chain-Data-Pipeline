@@ -15,7 +15,8 @@ FROM orders o
 JOIN shipments s ON o.order_id = s.order_id
 JOIN order_items oi ON o.order_id = oi.order_id
 JOIN production_batches pb ON oi.product_id = pb.product_id
-JOIN quality_inspections q ON pb.batch_id = q.batch_id;
+JOIN quality_inspections q ON pb.batch_id = q.batch_id
+WHERE o.required_date < CURDATE();
 
 # Operations(Orders & Logistics)
 CREATE VIEW vw_operations_orders AS
@@ -106,5 +107,6 @@ SELECT
 FROM orders o
 JOIN order_items oi ON o.order_id = oi.order_id
 JOIN customers c ON o.customer_id = c.customer_id
+WHERE o.required_date < CURDATE()
 GROUP BY o.customer_id;
     
