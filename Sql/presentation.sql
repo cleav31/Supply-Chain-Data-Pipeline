@@ -2,21 +2,43 @@
 use supply_chain_db;
 CREATE VIEW vw_kpi_summary AS
 SELECT
-	COUNT(DISTINCT o.order_id) AS total_orders,
-    SUM(oi.quantity * oi.unit_price) AS total_revenue,
-    AVG(DATEDIFF(s.ship_date, o.order_date)) AS avg_fullfillment_days,
-    AVG(CASE
-		WHEN s.delivery_date <= o.required_date THEN 1
-        ELSE 0
-	END) AS on_time_delivery_rate,
-    AVG(q.defective_units/(q.defective_units + q.passed_units))
-		AS defect_rate
-FROM orders o
-JOIN shipments s ON o.order_id = s.order_id
-JOIN order_items oi ON o.order_id = oi.order_id
-JOIN production_batches pb ON oi.product_id = pb.product_id
-JOIN quality_inspections q ON pb.batch_id = q.batch_id
-WHERE o.required_date < CURDATE();
+    r.total_orders,
+    r.total_revenue,
+    s.avg_fulfillment_days,
+    s.on_time_delivery_rate,
+    q.defect_rate
+FROM
+-- Revenue block
+(
+    SELECT
+        COUNT(DISTINCT o.order_id) AS total_orders,
+        SUM(oi.quantity * oi.unit_price) AS total_revenue
+    FROM orders o
+    JOIN order_items oi ON o.order_id = oi.order_id
+    WHERE o.required_date < CURDATE()
+) r
+-- Shipping metrics
+JOIN
+(
+    SELECT
+        AVG(DATEDIFF(s.ship_date, o.order_date)) AS avg_fulfillment_days,
+        AVG(CASE
+            WHEN s.delivery_date <= o.required_date THEN 1
+            ELSE 0
+        END) AS on_time_delivery_rate
+    FROM orders o
+    JOIN shipments s ON o.order_id = s.order_id
+    WHERE o.required_date < CURDATE()
+) s
+
+-- Quality metrics
+JOIN
+(
+    SELECT
+        AVG(q.defective_units / (q.defective_units + q.passed_units)) AS defect_rate
+    FROM production_batches pb
+    JOIN quality_inspections q ON pb.batch_id = q.batch_id
+) q;
 
 # Operations(Orders & Logistics)
 CREATE VIEW vw_operations_orders AS
