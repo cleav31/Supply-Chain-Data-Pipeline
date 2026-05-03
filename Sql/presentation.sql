@@ -4,7 +4,7 @@ CREATE VIEW vw_kpi_summary AS
 SELECT
     r.total_orders,
     r.total_revenue,
-    s.avg_fulfillment_days,
+    s.avg_fullfillment_days,
     s.on_time_delivery_rate,
     q.defect_rate
 FROM
@@ -21,7 +21,7 @@ FROM
 JOIN
 (
     SELECT
-        AVG(DATEDIFF(s.ship_date, o.order_date)) AS avg_fulfillment_days,
+        AVG(DATEDIFF(s.ship_date, o.order_date)) AS avg_fullfillment_days,
         AVG(CASE
             WHEN s.delivery_date <= o.required_date THEN 1
             ELSE 0
