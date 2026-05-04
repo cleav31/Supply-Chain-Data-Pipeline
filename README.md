@@ -86,6 +86,7 @@ Developed business-facing views
 | required_date | DATE    | date order is expected |
 | status      | VARCHAR(50) | delivery status of order | 
 ## Entity Relationship Diagram
+<img width="778" height="735" alt="Screenshot 2026-05-04 131829" src="https://github.com/user-attachments/assets/61f7195d-3fe2-4a5c-837d-2b73c03d6bed" />
 
 ## Results & Business Recommendations
 ### Key Findings
