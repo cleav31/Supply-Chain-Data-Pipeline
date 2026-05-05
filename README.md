@@ -106,8 +106,6 @@ An interactive dashboard was built in Power BI, featuring:
 ## Entity Relationship Diagram
 <img width="778" height="735" alt="Screenshot 2026-05-04 131829" src="https://github.com/user-attachments/assets/61f7195d-3fe2-4a5c-837d-2b73c03d6bed" />
 
-<img width="778" height="735" alt="ERD - Supply Chain Data Pipeline" src="https://github.com/user-attachments/assets/61f7195d-3fe2-4a5c-837d-2b73c03d6bed" />
-
 ---
 
 ## Data Dictionary
@@ -161,7 +159,6 @@ An interactive dashboard was built in Power BI, featuring:
 ---
 
 ## Next Steps
-<<<<<<< HEAD
 
 - [ ] Implement a star schema for more scalable and flexible analytics
 - [ ] Add a date dimension table to support consistent time-based filtering
@@ -192,4 +189,4 @@ An interactive dashboard was built in Power BI, featuring:
   - Supplier performance metrics
   - Cost & profit margin analysis
 - Deploy dashboards to a cloud platform for stakeholder access
->>>>>>> 4d3b8aff2eedc29a3354fc54978ef752043ad44e
+
