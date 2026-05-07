@@ -6,6 +6,7 @@
 
 ## 📋 Table of Contents
 - [Executive Summary](#executive-summary)
+- [Dashboard Preview](#dashboard-preview)
 - [Business Problem](#business-problem)
 - [Tech Stack](#tech-stack)
 - [Methodology](#methodology)
@@ -25,6 +26,19 @@ This project builds an end-to-end supply chain analytics pipeline that transform
 The pipeline integrates data across orders, shipments, production batches, and quality inspections to deliver KPIs covering revenue performance, fulfillment efficiency, and product defect rates — enabling stakeholders to monitor operations and identify opportunities for cost reduction and process improvement.
 
 ---
+## Dashboard Preview
+
+### KPI Summary
+![KPI Summary Dashboard](images/executive_overview.jpg)
+
+### Operations
+![Operations](images/operations.jpg)
+
+### Quality
+![Quality](images/quality.jpg)
+
+### Sales and Products
+![Sales and Products](images/sales_and_products.jpg)
 
 ## Business Problem
 
@@ -44,7 +58,7 @@ Without a structured data model, reporting becomes inconsistent and prone to err
 | Layer | Tool / Technology |
 |---|---|
 | Data Generation | Python (Faker library) |
-| Database | MySQL |
+| Database | MySQL , SQLAlchemy(Injection) |
 | Transformation | SQL (Views, Joins, Window Functions) |
 | Visualization | Power BI |
 
@@ -57,6 +71,9 @@ Synthetic datasets were created using Python's `Faker` library to simulate reali
 
 - Customers
 - Products
+- Suppliers
+- Warehouses
+- Employees
 - Orders & Order Items
 - Shipments
 - Production Batches
@@ -106,8 +123,6 @@ An interactive dashboard was built in Power BI, featuring:
 ## Entity Relationship Diagram
 <img width="778" height="735" alt="Screenshot 2026-05-04 131829" src="https://github.com/user-attachments/assets/61f7195d-3fe2-4a5c-837d-2b73c03d6bed" />
 
-<img width="778" height="735" alt="ERD - Supply Chain Data Pipeline" src="https://github.com/user-attachments/assets/61f7195d-3fe2-4a5c-837d-2b73c03d6bed" />
-
 ---
 
 ## Data Dictionary
@@ -138,6 +153,7 @@ An interactive dashboard was built in Power BI, featuring:
 | `required_date` | DATE | Expected fulfillment date |
 | `status` | VARCHAR(50) | Current delivery status |
 
+### Click to see the entire [Data Dictionary](tables.md)
 ---
 
 ## Results & Business Recommendations
@@ -161,7 +177,6 @@ An interactive dashboard was built in Power BI, featuring:
 ---
 
 ## Next Steps
-<<<<<<< HEAD
 
 - [ ] Implement a star schema for more scalable and flexible analytics
 - [ ] Add a date dimension table to support consistent time-based filtering
@@ -185,11 +200,3 @@ An interactive dashboard was built in Power BI, featuring:
 - Data validation and debugging (e.g., resolving revenue discrepancies caused by join grain mismatches)
 - Translating raw data findings into concrete business recommendations
 =======
-- Implement a star schema for scalable analytics
-- Add a date dimension table for inconsistent time filtering
-- Introduce incremental data loading for pipeline efficiency
-- Expand analysis with:
-  - Supplier performance metrics
-  - Cost & profit margin analysis
-- Deploy dashboards to a cloud platform for stakeholder access
->>>>>>> 4d3b8aff2eedc29a3354fc54978ef752043ad44e
