@@ -21,6 +21,7 @@ def reset_tables(engine):
         conn.commit()
 
 def run_shipments_only(engine):
+    print("Starting shipment pipeline...")
     with engine.connect() as conn:
         # Pull orders WITH IDs
         df_orders = get_full_table("orders", engine)
@@ -52,6 +53,8 @@ def main(mode="full"):
         run_order_items_only(engine)
     elif mode == "full":
         run_full_pipeline(engine)
+    elif mode == "reset_tables":
+        reset_tables(engine)
 
 def run_full_pipeline(engine):
     # Layer 1: Dimensions ---
