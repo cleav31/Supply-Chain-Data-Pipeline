@@ -117,6 +117,11 @@ An interactive dashboard was built in Power BI, featuring:
 | `vw_revenue_trend` | Time-series revenue analysis |
 | `vw_product_sales` | Product performance metrics |
 | `vw_kpi_summary` | Executive-level KPI summary |
+| `vw_operations_orders` | Operations performance metrics |
+| `vw_quality_batches` |  Quality metrics |
+| ` vw_supplier_quality` | Supplier specific metrics |
+| `vw_warehouse_performance` | Warehouse performance metrics |
+### Click to see views in more depth [Views](tables.md)
 
 ---
 
@@ -199,4 +204,3 @@ An interactive dashboard was built in Power BI, featuring:
 - KPI development aligned to business objectives
 - Data validation and debugging (e.g., resolving revenue discrepancies caused by join grain mismatches)
 - Translating raw data findings into concrete business recommendations
-=======
